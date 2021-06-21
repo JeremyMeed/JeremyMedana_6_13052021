@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const encrypt = require("mongoose-encryption");
 
 // Schema sauce Mongoose
 const sauceSchema = mongoose.Schema({
@@ -15,10 +14,5 @@ const sauceSchema = mongoose.Schema({
   usersLiked: [String],
   usersDisliked: [String],
 });
-
-var encKey = process.env.ENC_KEY;
-var sigKey = process.env.SIG_KEY;
-
-sauceSchema.plugin(encrypt, { encryptionKey: encKey, signingKey: sigKey });
 
 module.exports = mongoose.model("sauce", sauceSchema);

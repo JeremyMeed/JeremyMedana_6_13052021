@@ -59,7 +59,7 @@ exports.login = (req, res, next) => {
             // Si le mot de passe est correct, on renvoie l'identifiant userID depuis la bdd et un jeton Web JSON signé
             res.status(200).json({
               userId: user._id,
-              token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+              token: jwt.sign({ userId: user._id }, process.env.TOKEN, {
                 expiresIn: "24h",
               }),
             });

@@ -44,7 +44,7 @@ exports.getOneSauce = (req, res, next) => {
     _id: req.params.id,
   })
     .then((sauce) => res.status(200).json(sauce))
-    .catch((error) => res.status(404).json({ error }));
+    .catch((error) => res.status(500).json({ error }));
 };
 
 // Modifier une sauce
@@ -121,5 +121,5 @@ exports.likeSauce = (req, res, next) => {
       sauce.dislikes = usersDisliked.length;
       sauce.save().then(() => res.status(200).json({ message: message }));
     })
-    .catch((error) => res.status(404).json({ error }));
+    .catch((error) => res.status(500).json({ error }));
 };
